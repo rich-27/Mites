@@ -1,0 +1,6 @@
+item.mites:genericMite.name=Generic Mite
+item.mites:woodMite.name=Wood Mite
+item.mites:leafMite.name=Leaf Mite
+item.mites:oreMite.name=Ore Mite
+tile.mites:colony.name=Mitey Colony
+itemGroup.mites=Mites
