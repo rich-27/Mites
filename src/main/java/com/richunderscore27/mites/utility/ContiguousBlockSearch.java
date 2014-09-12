@@ -69,9 +69,8 @@ public class ContiguousBlockSearch
 
                 contiguousBlocks.add(pos);
 
-                for (int side = 0; side < 6; ++side)
+                for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
                 {
-                    ForgeDirection dir = ForgeDirection.getOrientation(side);
                     blocksToSearch.add(new ChunkPosition(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ));
                 }
             }
