@@ -1,13 +1,13 @@
 package com.richunderscore27.mites.item;
 
 import com.richunderscore27.mites.reference.MiteTarget;
-import com.richunderscore27.mites.utility.search.ContiguousBlockSearch;
-import com.richunderscore27.mites.utility.search.ContiguousBlockSearchType;
+import com.richunderscore27.mites.utility.LogHelper;
+import com.richunderscore27.mites.utility.ContiguousBlockSearch;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 
@@ -37,9 +37,9 @@ public class ItemWorldMite extends ItemMites
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float posX, float posY, float posZ)
     {
         Block block = world.getBlock(x, y, z);
-        // int metadata = world.getBlockMetadata(x, y, z);
+        boolean isCreative = player.capabilities.isCreativeMode;
 
-        if (player.canPlayerEdit(x, y, z, side, itemStack) && (targetBlockType.validItems.contains(new ItemStack(block)) || this.targetBlockType == MiteTarget.ANY))
+        if (player.canPlayerEdit(x, y, z, side, itemStack) && (targetBlockType.validItems.contains(new ItemStack(block).getUnlocalizedName()) || this.targetBlockType == MiteTarget.ANY))
         {
             if (world.isRemote)
             {
@@ -47,25 +47,20 @@ public class ItemWorldMite extends ItemMites
             }
             else
             {
-                player.addChatComponentMessage(new ChatComponentText(world.getBlock(x, y, z).getUnlocalizedName() + " : " + world.getBlockMetadata(x, y, z)));
-                ContiguousBlockSearchType contiguousBlockSearchType = new ContiguousBlockSearchType(world, x, y, z, targetBlockType);
-                List<ChunkPosition> contiguousBlocks = contiguousBlockSearchType.searchContiguous();
-
-                /*
-                ContiguousBlockSearch contiguousBlockSearch = new ContiguousBlockSearch(world, x, y, z, block, metadata);
+                // player.addChatComponentMessage(new ChatComponentText(world.getBlock(x, y, z).getUnlocalizedName() + " : " + world.getBlockMetadata(x, y, z)));
+                ContiguousBlockSearch contiguousBlockSearch = new ContiguousBlockSearch(world, x, y, z, targetBlockType);
                 List<ChunkPosition> contiguousBlocks = contiguousBlockSearch.searchContiguous();
-                 */
 
                 if(contiguousBlocks == null)
                 {
                     return false;
                 }
 
-                if (!player.capabilities.isCreativeMode)
+                if (!isCreative)
                 {
                     --itemStack.stackSize;
                 }
-                consumeBlocks(world, contiguousBlocks, !player.capabilities.isCreativeMode);
+                consumeBlocks(world, contiguousBlocks, !isCreative);
                 
                 return true;
             }

@@ -1,9 +1,12 @@
 package com.richunderscore27.mites.reference;
 
+import com.richunderscore27.mites.utility.LogHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+
+// TODO: Refactor enum to use UniqueIdentifier not UnlocalizedName
 
 public enum MiteTarget
 {
@@ -15,11 +18,15 @@ public enum MiteTarget
 
     ORE(getAllOres());
 
-    public final ArrayList<ItemStack> validItems;
+    public final ArrayList<String> validItems;
 
     private MiteTarget(ArrayList<ItemStack> itemStacks)
     {
-        validItems = itemStacks;
+        validItems = new ArrayList<String>();
+        for(ItemStack itemStack : itemStacks)
+        {
+            validItems.add(itemStack.getUnlocalizedName());
+        }
     }
 
     private static ArrayList<ItemStack> getAllOres()
