@@ -1,0 +1,59 @@
+[01:52:36] [main/INFO]: Setting user: ForgeDevName
+[01:52:38] [Client thread/INFO]: LWJGL Version: 2.9.1
+[01:52:51] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Mites
+[01:52:52] [Sound Library Loader/INFO]: Sound engine started
+[01:52:53] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[01:52:53] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[01:52:53] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Mites
+[01:52:53] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[01:52:54] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[01:52:54] [Sound Library Loader/INFO]: Sound engine started
+[01:53:02] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[01:53:02] [Server thread/INFO]: Generating keypair
+[01:53:03] [Server thread/INFO]: Preparing start region for level 0
+[01:53:04] [Server thread/INFO]: Preparing spawn area: 27%
+[01:53:05] [Server thread/INFO]: Preparing spawn area: 73%
+[01:53:06] [Server thread/INFO]: Changing view distance to 12, from 10
+[01:53:06] [Server thread/INFO]: ForgeDevName[local:E:dcb56d07] logged in with entity id 344 at (-358.96392270681156, 86.96784056601216, 54.61634683186757)
+[01:53:06] [Server thread/INFO]: ForgeDevName joined the game
+[01:53:12] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:mob.witch.idle
+[01:53:16] [Client thread/INFO]: [CHAT] tile.leaves : 1
+[01:53:17] [Client thread/INFO]: [CHAT] tile.log : 1
+[01:53:19] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:21] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:22] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:22] [Client thread/INFO]: [CHAT] tile.log : 1
+[01:53:23] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:26] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:26] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:27] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:28] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:29] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:31] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:32] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:33] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:34] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:35] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:36] [Client thread/INFO]: [CHAT] tile.log : 0
+[01:53:49] [Client thread/INFO]: [CHAT] tile.snow : 0
+[01:53:50] [Client thread/INFO]: [CHAT] tile.leaves : 1
+[01:53:52] [Client thread/INFO]: [CHAT] tile.log : 1
+[01:53:53] [Client thread/INFO]: [CHAT] tile.leaves : 9
+[01:53:57] [Client thread/INFO]: [CHAT] tile.snow : 0
+[01:53:58] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:58] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:53:59] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:54:00] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:54:01] [Client thread/INFO]: [CHAT] tile.leaves : 8
+[01:54:02] [Client thread/INFO]: [CHAT] tile.log : 0
+[01:54:05] [Server thread/INFO]: Saving and pausing game...
+[01:54:05] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[01:54:05] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[01:54:05] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[01:54:06] [Server thread/INFO]: Stopping server
+[01:54:06] [Server thread/INFO]: Saving players
+[01:54:06] [Server thread/INFO]: Saving worlds
+[01:54:06] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[01:54:06] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[01:54:06] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[01:54:07] [Client thread/INFO]: Stopping!

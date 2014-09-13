@@ -1,22 +1,26 @@
 package com.richunderscore27.mites.init;
 
 import com.richunderscore27.mites.item.*;
+import com.richunderscore27.mites.reference.MiteTarget;
 import com.richunderscore27.mites.reference.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems
 {
-    public static final ItemMites genericMite = new ItemGenericMite();
-    public static final ItemMites woodMite = new ItemWoodMite();
-    public static final ItemMites leafMite = new ItemLeafMite();
-    public static final ItemMites oreMite = new ItemOreMite();
+    public static final Item woodMite = new ItemWorldMite().setTargetBlockType(MiteTarget.LOG).setUnlocalizedName("woodMite").setTextureName("woodMite");
+    public static final Item leafMite = new ItemWorldMite().setTargetBlockType(MiteTarget.LEAF).setUnlocalizedName("leafMite").setTextureName("leafMite");
+    public static final Item oreMite = new ItemWorldMite().setTargetBlockType(MiteTarget.ORE).setUnlocalizedName("oreMite").setTextureName("oreMite");
+    public static final Item advancedMite = new ItemWorldMite().setUnlocalizedName("advancedMite").setTextureName("advancedMite");
 
     public static void init()
     {
-        GameRegistry.registerItem(genericMite, "genericMite");
         GameRegistry.registerItem(woodMite, "woodMite");
         GameRegistry.registerItem(leafMite, "leafMite");
         GameRegistry.registerItem(oreMite, "oreMite");
+        GameRegistry.registerItem(advancedMite, "advancedMite");
     }
 }

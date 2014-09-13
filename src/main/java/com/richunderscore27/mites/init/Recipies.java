@@ -11,8 +11,10 @@ public class Recipies
 {
     public static void init()
     {
+        /*
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.woodMite), new ItemStack(ModItems.genericMite), "logWood"));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.leafMite), new ItemStack(ModItems.genericMite), "treeLeaves"));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.oreMite), new ItemStack(ModItems.genericMite), "oreIron"));
+        */
     }
 }

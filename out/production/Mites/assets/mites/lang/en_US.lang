@@ -1,6 +1,16 @@
-item.mites:genericMite.name=Generic Mite
+# Keys
+keys.mites.category=Mites
+# keys.mites.key1=Key 1
+# keys.mites.key2=Key 2
+
+# Creative Tabs
+itemGroup.mites=Mites
+
+# Items
 item.mites:woodMite.name=Wood Mite
 item.mites:leafMite.name=Leaf Mite
 item.mites:oreMite.name=Ore Mite
+item.mites:advancedMite.name=Advanced Mite
+
+# Blocks
 tile.mites:colony.name=Mitey Colony
-itemGroup.mites=Mites

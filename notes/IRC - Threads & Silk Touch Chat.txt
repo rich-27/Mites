@@ -1,0 +1,88 @@
+[6:57pm] rich_27: What are threads in terms of ThreadLocal, and why are they used?
+
+[6:57pm] diesieben07: a thread is... well a thread. you should look that up if you dont know what that means
+
+[6:57pm] diesieben07: a ThreadLocal is a variable that has a different value per thread
+
+[7:00pm] rich_27: diesieben07: Ah, cheers, I hadn’t realised they were bigger than minecraft - explains why trying to find infor on them with respect to forge didn’t work
+
+[7:06pm] rich_27: So in the harvestBlock method of Block (http://i.imgur.com/bxLjlxH.png), what is the use of the thread harvesters that is used in the else statement? Why use it?
+
+[7:07pm] diesieben07: rich_27 that is because of Client/Server
+[7:07pm] diesieben07: those run on different threads
+[7:07pm] diesieben07: but use the same class
+[7:08pm] diesieben07: (really you shouldn't need to worry abotu this it's implementation detail)
+
+[7:10pm] rich_27: diesieben07: So if I’m understanding correctly, the client and server would execute similarly until the thread, at which point they would process differently? Or have I missed the point completely?
+
+[7:10pm] diesieben07: Yes you have.
+[7:10pm] diesieben07: Learn what threads are.
+
+[7:12pm] • MageRooster comes in with a pair of scissors and a bolt of cloth wrapped around his shoulders. "THREAAAAADS."
+
+[7:14pm] rich_27: I thought I knew what they were; they are where the processing splits and the thread can be processed simulataneously (e.g. on another cpu core) to speed processing time, right? I just don’t see how it helps in this implementation - surely the code would have to wait for the returned value, whichever thread the code was running on. Sorry for my noobness!
+[7:15pm] rich_27: (Researching java threads didn’t turn up much more than how to implement)
+
+[7:15pm] zhiayang: ugh threads
+
+[7:16pm] diesieben07: Ok, so a Thread is basically like an emulated CPU core. Minecraft runs a Client/Server architechture. The client runs on one thread, the server runs on the other. Since *both* run on the same JVM and both use the same Block class there is a ThreadLocal used here, because otherwise both threads would write and read from the same varaible, interfering with each other.
+
+[7:17pm] zhiayang: ugh, thead local storage
+
+[7:17pm] diesieben07: yeah
+
+[7:17pm] zhiayang: (sorry for this pessimism, they're fun to use but an ass to implement)
+
+[7:17pm] diesieben07: i agree
+[7:17pm] diesieben07: especially here though it could have been done much easier because there are only ever two threads
+[7:18pm] diesieben07: so you dont need a ThreadLocal, just two fields and an if statement on world.isRemote ...
+
+[7:18pm] zhiayang: mojang isn't known for doing things the proper way
+[7:18pm] zhiayang: only the lazy way
+[7:18pm] zhiayang: the "what works for now" way
+
+[7:18pm] diesieben07: this is forge code
+
+[7:18pm] zhiayang: well
+
+[7:18pm] rich_27: Ah, I see, thanks! So is it kind of like where you use the @SideOnly tag, but you need both client and server o process it?
+
+[7:18pm] diesieben07: neither the ThreadLocal nor the two field solution is pretty zhiayang
+
+[7:18pm] zhiayang: diesieben07: i wouldn't say that about forge...
+
+[7:18pm] diesieben07: rich_27: ehm... no
+[7:19pm] diesieben07: thats like... something completely different.
+
+[7:19pm] rich_27: Oh
+
+[7:19pm] zhiayang: nothing involving simultaneous processing is 'pretty'
+
+[7:19pm] rich_27: And I thought I was getting soemwhere!
+
+[7:19pm] diesieben07: not true.
+[7:19pm] diesieben07: if you use Futures and listeners and other high-level stuff it's perfectly fine.
+
+[7:19pm] diesieben07: rich_27 @SideOnly decides between dedicated server and client.
+[7:20pm] diesieben07: (so the integrated server still has a methdo which has @SideOnly(Side.CLIENT)
+[7:20pm] diesieben07: its confusing i know.
+
+[7:20pm] rich_27: Ah ok
+[7:21pm] rich_27: I hadn’t thought to differentiate between integrated and dedicated server
+
+[7:21pm] diesieben07: you should not, really
+[7:21pm] diesieben07: they are just "server"
+
+[7:23pm] rich_27: So when silk_check_meta is used (http://i.imgur.com/hBvAbL0.png) why would the server and client both be accessing the boolean ret, when generally a variable can be declared or set without having concurrent processing mucking it up?
+
+[7:23pm] diesieben07: no no no.
+[7:24pm] diesieben07: this is a bit more complicated. why a ThreadLocal is used here is a hack. to make mojang code work with forge patches.
+
+[7:25pm] rich_27: Ah ok
+
+[7:27pm] rich_27: So it is just a way of getting the method done that I shouldn’t be overly concerned with? I was wondering as I’m planning a block I’m creating that drops nothing with no tool, a certain drop with a iron+ shovel, and the ItemBlock if it is silk touched, and as such I was thinking I’d have to override the harvestBlock method
+
+[7:29pm] diesieben07: rich_27 it's pretty simple: override canSilkHarvest if you want your block to support silk-touch. then override createStackedBlock for the silk-touch result (if it should differ from the normal result) and getDrops for the "normal" drops.
+
+[7:30pm] rich_27: Ok, thanks
+[7:31pm] rich_27: Figuring out what methods need tweaking is a nightmare!

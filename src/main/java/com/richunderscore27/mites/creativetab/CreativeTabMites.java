@@ -12,7 +12,7 @@ public class CreativeTabMites
         @Override
         public Item getTabIconItem()
         {
-            return ModItems.genericMite;
+            return ModItems.advancedMite;
         }
     };
 }

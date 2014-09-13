@@ -7,10 +7,10 @@ keys.mites.category=Mites
 itemGroup.mites=Mites
 
 # Items
-item.mites:genericMite.name=Generic Mite
 item.mites:woodMite.name=Wood Mite
 item.mites:leafMite.name=Leaf Mite
 item.mites:oreMite.name=Ore Mite
+item.mites:advancedMite.name=Advanced Mite
 
 # Blocks
 tile.mites:colony.name=Mitey Colony
