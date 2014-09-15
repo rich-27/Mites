@@ -30,6 +30,18 @@ public class ItemWorldMite extends ItemMites
     /**
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
      * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
+     *
+     * @param itemStack The item being used
+     * @param player The player that used item
+     * @param world The current world
+     * @param x X Position of targeted block
+     * @param y Y position of targeted block
+     * @param z Z position of targeted block
+     * @param side Side of target block the item was used on
+     * @param posX X Position on block face (0 - 1)
+     * @param posY Y Position on block face (0 - 1)
+     * @param posZ Z Position on block face (0 - 1)
+     * @return Boolean Use success/failure
      */
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float posX, float posY, float posZ)
