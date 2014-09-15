@@ -1,11 +1,9 @@
 package com.richunderscore27.mites.item;
 
 import com.richunderscore27.mites.reference.MiteTarget;
-import com.richunderscore27.mites.utility.LogHelper;
 import com.richunderscore27.mites.utility.ContiguousBlockSearch;
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.ChunkPosition;
@@ -36,10 +34,11 @@ public class ItemWorldMite extends ItemMites
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float posX, float posY, float posZ)
     {
-        Block block = world.getBlock(x, y, z);
+        GameRegistry.UniqueIdentifier targetBlock = GameRegistry.findUniqueIdentifierFor(world.getBlock(x, y, z));
+        targetBlock = targetBlock.name.startsWith("lit_") ? new GameRegistry.UniqueIdentifier(targetBlock.modId + ":" + targetBlock.name.substring(4)) : targetBlock;
         boolean isCreative = player.capabilities.isCreativeMode;
 
-        if (player.canPlayerEdit(x, y, z, side, itemStack) && (targetBlockType.validItems.contains(new ItemStack(block).getUnlocalizedName()) || this.targetBlockType == MiteTarget.ANY))
+        if (player.canPlayerEdit(x, y, z, side, itemStack) && (targetBlockType.validItems.containsKey(targetBlock) || this.targetBlockType == MiteTarget.ANY))
         {
             if (world.isRemote)
             {
@@ -47,8 +46,7 @@ public class ItemWorldMite extends ItemMites
             }
             else
             {
-                // player.addChatComponentMessage(new ChatComponentText(world.getBlock(x, y, z).getUnlocalizedName() + " : " + world.getBlockMetadata(x, y, z)));
-                ContiguousBlockSearch contiguousBlockSearch = new ContiguousBlockSearch(world, x, y, z, targetBlockType);
+                ContiguousBlockSearch contiguousBlockSearch = new ContiguousBlockSearch(world, x, y, z, targetBlockType, targetBlock);
                 List<ChunkPosition> contiguousBlocks = contiguousBlockSearch.searchContiguous();
 
                 if(contiguousBlocks == null)

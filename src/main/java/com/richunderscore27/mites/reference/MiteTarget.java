@@ -1,44 +1,40 @@
 package com.richunderscore27.mites.reference;
 
 import com.richunderscore27.mites.utility.LogHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
-
-// TODO: Refactor enum to use UniqueIdentifier not UnlocalizedName
+import java.util.HashMap;
 
 public enum MiteTarget
 {
-    ANY(new ArrayList<ItemStack>()),
+    ANY(""),
 
-    LEAF(OreDictionary.getOres("treeLeaves")),
+    LEAF("treeLeaves"),
 
-    LOG(OreDictionary.getOres("logWood")),
+    LOG("logWood"),
 
-    ORE(getAllOres());
+    ORE("ore");
 
-    public final ArrayList<String> validItems;
+    public final HashMap<GameRegistry.UniqueIdentifier, String> validItems;
 
-    private MiteTarget(ArrayList<ItemStack> itemStacks)
+    private MiteTarget(String string)
     {
-        validItems = new ArrayList<String>();
-        for(ItemStack itemStack : itemStacks)
+        validItems = new HashMap<GameRegistry.UniqueIdentifier, String>();
+        for (String oreName : OreDictionary.getOreNames())
         {
-            validItems.add(itemStack.getUnlocalizedName());
-        }
-    }
-
-    private static ArrayList<ItemStack> getAllOres()
-    {
-        ArrayList<ItemStack> allOres = new ArrayList<ItemStack>();
-        for(String oreName : OreDictionary.getOreNames())
-        {
-            if (oreName.startsWith("ore"))
+            if (oreName.contains(string))
             {
-                allOres.addAll(OreDictionary.getOres(oreName));
+                ArrayList<ItemStack> itemStacks = OreDictionary.getOres(oreName);
+                for(ItemStack itemStack : itemStacks)
+                {
+                    LogHelper.info("Key: " + GameRegistry.findUniqueIdentifierFor(itemStack.getItem()));
+                    LogHelper.info("Value: " + oreName);
+                    validItems.put(GameRegistry.findUniqueIdentifierFor(itemStack.getItem()), oreName);
+                }
             }
         }
-        return allOres;
     }
 }

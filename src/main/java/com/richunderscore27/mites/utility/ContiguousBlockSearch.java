@@ -1,19 +1,16 @@
 package com.richunderscore27.mites.utility;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.richunderscore27.mites.handler.ConfigurationHandler;
 import com.richunderscore27.mites.reference.MiteTarget;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedstoneOre;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,23 +19,25 @@ public class ContiguousBlockSearch
     private final int maxBlocks;
     private World worldObj;
     private final ChunkPosition initSearchPos;
-    private ArrayList<String> targetBlocks;
+    private HashMap<GameRegistry.UniqueIdentifier, String> oreLookup;
+    private String targetOre;
 
     private HashSet<ChunkPosition> blocksToSearch = new HashSet<ChunkPosition>();
     private HashSet<ChunkPosition> blocksSearched = new HashSet<ChunkPosition>();
     private List<ChunkPosition> iterator = new ArrayList<ChunkPosition>();
     private final List<ChunkPosition> contiguousBlocks = new ArrayList<ChunkPosition>();
 
-    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget)
+    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier)
     {
         maxBlocks = ConfigurationHandler.maxSearchBlocks;
 
         worldObj = world;
         initSearchPos = new ChunkPosition(x, y, z);
-        targetBlocks = miteTarget.validItems;
+        oreLookup = miteTarget.validItems;
+        targetOre = oreLookup.get(uniqueIdentifier) == null ? uniqueIdentifier.name : oreLookup.get(uniqueIdentifier);
     }
 
-    // TODO: Make search run off specific ore dictionary entry for block, not whole miteTarget category
+    // TODO: Make leaf search diagonal
 
     public List<ChunkPosition> searchContiguous()
     {
@@ -66,54 +65,12 @@ public class ContiguousBlockSearch
                 int y = pos.chunkPosY;
                 int z = pos.chunkPosZ;
 
-                /*
-                Block block = worldObj.getBlock(x, y, z);
-                String registryName = Block.blockRegistry.getNameForObject(block);
-
-                if (registryName.startsWith("lit_"))
-                {
-                    block = (Block)Block.blockRegistry.getObject(registryName.substring(4));
-                }
-                */
-
 
                 Block block = worldObj.getBlock(x, y, z);
                 GameRegistry.UniqueIdentifier uniqueId = GameRegistry.findUniqueIdentifierFor(block);
+                uniqueId = uniqueId.name.startsWith("lit_") ? new GameRegistry.UniqueIdentifier(uniqueId.modId + ":" + uniqueId.name.substring(4)) : uniqueId;
 
-                if(uniqueId.name.startsWith("lit_"))
-                {
-                    block = GameRegistry.findBlock(uniqueId.modId, uniqueId.name.substring(4));
-                }
-
-
-                /*
-                block.getPickBlock()
-
-                blockRegistry.addObject(
-                        73,
-                        "redstone_ore",
-                        (new BlockRedstoneOre(false))
-                                .setHardness(3.0F)
-                                .setResistance(5.0F)
-                                .setStepSound(soundTypePiston)
-                                .setBlockName("oreRedstone")
-                                .setCreativeTab(CreativeTabs.tabBlock)
-                                .setBlockTextureName("redstone_ore")
-                );
-                blockRegistry.addObject(
-                        74,
-                        "lit_redstone_ore",
-                        (new BlockRedstoneOre(true))
-                                .setLightLevel(0.625F)
-                                .setHardness(3.0F)
-                                .setResistance(5.0F)
-                                .setStepSound(soundTypePiston)
-                                .setBlockName("oreRedstone")
-                                .setBlockTextureName("redstone_ore")
-                );
-                */
-
-                if (block == Blocks.air || !targetBlocks.contains(new ItemStack(block).getUnlocalizedName()))
+                if (block == Blocks.air || !targetOre.equals(oreLookup.get(uniqueId) == null ? uniqueId.name : oreLookup.get(uniqueId)))
                 {
                     continue;
                 }

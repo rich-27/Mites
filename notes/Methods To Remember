@@ -1,0 +1,1 @@
+player.addChatComponentMessage(new ChatComponentText(world.getBlock(x, y, z).getUnlocalizedName() + " : " + world.getBlockMetadata(x, y, z)));
