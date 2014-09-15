@@ -1,0 +1,15 @@
+/*
+.DS_Store
+!.git*
+!/build/libs/
+!/build/libs/*
+!/gradle/
+!/gradle/*
+!/gradle*
+!/src/
+!/src/*
+!/build.gradle
+!/*.md
+!/LICENSE
+!/notes
+!/notes/*
