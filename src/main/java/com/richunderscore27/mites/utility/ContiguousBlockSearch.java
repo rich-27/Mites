@@ -21,13 +21,30 @@ public class ContiguousBlockSearch
     private final ChunkPosition initSearchPos;
     private HashMap<GameRegistry.UniqueIdentifier, String> oreLookup;
     private String targetOre;
+    private int contiguity;
 
     private HashSet<ChunkPosition> blocksToSearch = new HashSet<ChunkPosition>();
     private HashSet<ChunkPosition> blocksSearched = new HashSet<ChunkPosition>();
     private List<ChunkPosition> iterator = new ArrayList<ChunkPosition>();
     private final List<ChunkPosition> contiguousBlocks = new ArrayList<ChunkPosition>();
 
-    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier)
+    /**
+     * Initializes ContiguousBlockSearch object.
+     *
+     * Contiguity:
+     *      0: Face touching (uses block hard limit)
+     *      1: Edge touching (uses radial limit) - not implemented
+     *      2: Vertex touching (uses radial limit) - not implemented
+     *
+     * @param world The current world
+     * @param x X Position
+     * @param y Y position
+     * @param z Z position
+     * @param miteTarget Enum containing OreDictionary lookup of search target
+     * @param uniqueIdentifier UniqueIdentifier of the target block
+     * @param cont int to determine required contiguity
+     */
+    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier, int cont)
     {
         maxBlocks = ConfigurationHandler.maxSearchBlocks;
 
@@ -35,9 +52,13 @@ public class ContiguousBlockSearch
         initSearchPos = new ChunkPosition(x, y, z);
         oreLookup = miteTarget.validItems;
         targetOre = oreLookup.get(uniqueIdentifier) == null ? uniqueIdentifier.name : oreLookup.get(uniqueIdentifier);
+        contiguity = cont;
     }
 
-    // TODO: Make leaf search diagonal
+    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier)
+    {
+        this(world, x, y, z, miteTarget, uniqueIdentifier, 0);
+    }
 
     public List<ChunkPosition> searchContiguous()
     {
@@ -54,7 +75,7 @@ public class ContiguousBlockSearch
                     continue;
                 }
 
-                if (contiguousBlocks.size() > maxBlocks)
+                if (contiguity == 0 && contiguousBlocks.size() > maxBlocks)
                 {
                     return null;
                 }

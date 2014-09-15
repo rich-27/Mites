@@ -1,8 +1,5 @@
 Mites ToDo
 
-* Fix oredictionary lookup (MiteTarget, ItemWorldMite.onItemUse(),
-  ContiguousBlockSearchType)
-
 Implement WorldMite special case subclasses
 Implement other WorldMites
 ? Burrowing into block animation
@@ -11,6 +8,7 @@ Texture/effect change upon mite affected blocks
 Slow world interaction/restrict sounds
 Deal with metadata issues - oredictionary?
     => Work off oredictionary/ignore metadata/localized name?
+Improve leaf algorithm (edge/vertex contiguity, radial limit)
 
 PlayerMites
 Custom inv gui
