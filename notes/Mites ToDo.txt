@@ -2,7 +2,6 @@ Mites ToDo
 
 * Fix oredictionary lookup (MiteTarget, ItemWorldMite.onItemUse(),
   ContiguousBlockSearchType)
-* Remove game run files from git
 
 Implement WorldMite special case subclasses
 Implement other WorldMites
