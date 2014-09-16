@@ -67,3 +67,14 @@ Mechanics => Mites not crafted but found?
                   => Player mites eaten and then take up a certain
                        number of inventory slots (crafty = 4, ender = 2,
                        greedy = 1 (hotbar?), etc)
+
+Colony found in world (writhing block - custom model). As soon a player touches it, the become infested with info mite - vision dims and text scrolls across screen.
+Upon breaking block, player receives infomite and mighty larvae. Larvae have to be placed in incubation pool (heated liquid) that then writhes (like go'a'uld). Pool stores data (fluid tile entity), with after a certain period of time larvae maturing into stemites.
+Stemites consume like a normal mite, but without dropping items. After 15+/-5 blocks consumption, they drop a mite of the type of item they'd been consuming (reverse damage bar? drop when contiguity expires?).
+Mites can be placed into larval pools to develop larvae straight into mites of the associated type. Item filtered transfer nodes can auto extract mites.
+Heat causes increase in breeding rate, but flame kills them. Furnace powered beneath the pool is a good early game heat source, factorization heating element, heated redstone/high temperature generators provide speedy reproduction.
+Blood used as medium will provide far higher incubation rate.
+
+World mites can be gotten as standard. Upgrades through tossing certain items into larvae pools (firecharges for smelting - wood => charcoal, ores to ingots).
+Player mites second tier.
+Advanced mite 1/2 robotic, more flexible.
