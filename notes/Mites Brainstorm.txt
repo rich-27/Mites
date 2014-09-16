@@ -67,6 +67,13 @@ Mechanics => Mites not crafted but found?
                   => Player mites eaten and then take up a certain
                        number of inventory slots (crafty = 4, ender = 2,
                        greedy = 1 (hotbar?), etc)
+                  => Mites slowly eat away at tools that have the same
+                       harvest target (tightly control target+config disable),
+                       reducing durability. Will remember the amount of
+                       durability consumed and drop the relevant
+                       associated crafting ingredient (hardmode config just
+                       leaves stick/rod?)
+                       Thanks to Cazzar and Sequituri for the idea
 
 Colony found in world (writhing block - custom model). As soon a player touches it, the become infested with info mite - vision dims and text scrolls across screen.
 Upon breaking block, player receives infomite and mighty larvae. Larvae have to be placed in incubation pool (heated liquid) that then writhes (like go'a'uld). Pool stores data (fluid tile entity), with after a certain period of time larvae maturing into stemites.
