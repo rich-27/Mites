@@ -1,6 +1,5 @@
 package com.richunderscore27.mites.reference;
 
-import com.richunderscore27.mites.utility.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -30,8 +29,6 @@ public enum MiteTarget
                 ArrayList<ItemStack> itemStacks = OreDictionary.getOres(oreName);
                 for(ItemStack itemStack : itemStacks)
                 {
-                    LogHelper.info("Key: " + GameRegistry.findUniqueIdentifierFor(itemStack.getItem()));
-                    LogHelper.info("Value: " + oreName);
                     validItems.put(GameRegistry.findUniqueIdentifierFor(itemStack.getItem()), oreName);
                 }
             }
