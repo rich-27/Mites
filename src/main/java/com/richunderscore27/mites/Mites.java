@@ -7,12 +7,15 @@ import com.richunderscore27.mites.init.Recipies;
 import com.richunderscore27.mites.proxy.IProxy;
 import com.richunderscore27.mites.reference.Reference;
 import com.richunderscore27.mites.utility.LogHelper;
+import com.richunderscore27.mites.worldgen.ModWorldGen;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class Mites
@@ -36,6 +39,10 @@ public class Mites
         ModItems.init();
 
         ModBlocks.init();
+
+        ModWorldGen modWorldGen = new ModWorldGen();
+        GameRegistry.registerWorldGenerator(modWorldGen, 0);
+        FMLCommonHandler.instance().bus().register(modWorldGen);
 
         LogHelper.info("Pre Initialization Complete!");
     }
