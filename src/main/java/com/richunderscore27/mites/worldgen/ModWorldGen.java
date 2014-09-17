@@ -29,10 +29,13 @@ public class ModWorldGen implements IWorldGenerator
 
     private void generateSurface(World world, Random random, int x, int z)
     {
-        int posX = x + random.nextInt(16);
-        int posZ = z + random.nextInt(16);
-        int posY = world.getHeightValue(posX, posZ) - 1;
-        new WorldGenColony().generate(world, random, posX, posY, posZ);
+        if (random.nextFloat() < 0.2)
+        {
+            int posX = x + random.nextInt(16);
+            int posZ = z + random.nextInt(16);
+            int posY = world.getHeightValue(posX, posZ) - 1;
+            new WorldGenColony().generate(world, random, posX, posY, posZ);
+        }
     }
 
     private void generateNether(World world, Random random, int x, int z)
