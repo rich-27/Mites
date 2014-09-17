@@ -15,8 +15,7 @@ Custom inv gui
 Various functions
 ? Burrowing into head animation
 
-World gen colonies
-Implement hand=>null, iron+ shovel=>mites, st=>colony
+Implement colony break hand=>null, iron+ shovel=>mites, st=>colony
 Figure out colony mechanics
 
 Potentially refactor class names OreMite=>MiteWorldOre
