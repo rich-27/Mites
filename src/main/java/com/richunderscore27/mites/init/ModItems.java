@@ -9,13 +9,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 
-@GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems
 {
     public static final Item woodMite = new ItemWorldMite().setTargetBlockType(MiteTarget.LOG).setUnlocalizedName("woodMite").setTextureName("woodMite");
     public static final Item leafMite = new ItemWorldMite().setTargetBlockType(MiteTarget.LEAF).setUnlocalizedName("leafMite").setTextureName("leafMite");
     public static final Item oreMite = new ItemWorldMite().setTargetBlockType(MiteTarget.ORE).setUnlocalizedName("oreMite").setTextureName("oreMite");
     public static final Item advancedMite = new ItemWorldMite().setUnlocalizedName("advancedMite").setTextureName("advancedMite");
+    public static final Item miteyLarvae = new ItemWorldMite().setUnlocalizedName("miteyLarvae").setTextureName("miteyLarvae");
 
     public static void init()
     {

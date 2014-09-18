@@ -7,7 +7,6 @@ import com.richunderscore27.mites.reference.Names;
 import com.richunderscore27.mites.reference.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModBlocks
 {
     public static final BlockMites colony = new BlockColony();
