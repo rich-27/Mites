@@ -21,19 +21,19 @@ public class ItemMites extends Item
     @Override
     public String getUnlocalizedName()
     {
-        return "item." + Reference.MOD_ID.toLowerCase() + ":" + super.getUnlocalizedName().split(".")[1];
+        return "item." + Reference.MOD_ID.toLowerCase() + ":" + super.getUnlocalizedName().substring(super.getUnlocalizedName().indexOf(".") + 1);
     }
 
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return "item." + Reference.MOD_ID.toLowerCase() +":" + super.getUnlocalizedName().split(".")[1];
+        return "item." + Reference.MOD_ID.toLowerCase() +":" + super.getUnlocalizedName().substring(super.getUnlocalizedName().indexOf(".") + 1);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister)
     {
-        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().split(".")[1]);
+        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
 }

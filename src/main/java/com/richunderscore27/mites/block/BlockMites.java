@@ -30,13 +30,13 @@ public class BlockMites extends Block
     @Override
     public String getUnlocalizedName()
     {
-        return "tile." + Reference.MOD_ID.toLowerCase() + ":" + super.getUnlocalizedName().split(".")[1];
+        return "tile." + Reference.MOD_ID.toLowerCase() + ":" + super.getUnlocalizedName().substring(super.getUnlocalizedName().indexOf(".") + 1);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().split(".")[1]);
+        blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
 }
