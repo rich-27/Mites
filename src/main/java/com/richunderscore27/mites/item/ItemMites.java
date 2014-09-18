@@ -21,24 +21,19 @@ public class ItemMites extends Item
     @Override
     public String getUnlocalizedName()
     {
-        return String.format("item.%s%s", Textures.RESOURCE_PREFIX, getUnwrappedLocalizedName(super.getUnlocalizedName()));
+        return "item." + Reference.MOD_ID.toLowerCase() + ":" + super.getUnlocalizedName().split(".")[1];
     }
 
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return String.format("item.%s%s", Textures.RESOURCE_PREFIX, getUnwrappedLocalizedName(super.getUnlocalizedName()));
+        return "item." + Reference.MOD_ID.toLowerCase() +":" + super.getUnlocalizedName().split(".")[1];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister)
     {
-        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
-    }
-
-    protected String getUnwrappedLocalizedName(String unlocalizedName)
-    {
-        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().split(".")[1]);
     }
 }
