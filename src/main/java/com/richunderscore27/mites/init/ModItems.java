@@ -24,6 +24,6 @@ public class ModItems
         GameRegistry.registerItem(leafMite, "leafMite");
         GameRegistry.registerItem(oreMite, "oreMite");
         GameRegistry.registerItem(advancedMite, "advancedMite");
-        GameRegistry.registerItem(miteyLarvae, "advancedMite");
+        GameRegistry.registerItem(miteyLarvae, "miteyLarvae");
     }
 }
