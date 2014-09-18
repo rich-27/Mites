@@ -8,6 +8,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+// TODO: fix raytrace, getblock, setblock, etc. Placeholder block for y+1, y+2?
+
+// TODO: Implement drops - silktouch, larvae, infomite
+
 public class BlockColony extends BlockMites implements ITileEntityProvider
 {
     public BlockColony(Material material)

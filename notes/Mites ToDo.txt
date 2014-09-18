@@ -1,4 +1,4 @@
-Mites ToDo
+Mites TODO
 
 Implement WorldMite special case subclasses
 Implement other WorldMites

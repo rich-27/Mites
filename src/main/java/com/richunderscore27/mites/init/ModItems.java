@@ -19,7 +19,7 @@ public class ModItems
 
     public static void init()
     {
-        // ToDo: Convert to Names.Items.WOOD_MITE, etc - convert to metadata?
+        // TODO: Convert to Names.Items.WOOD_MITE, etc - convert to metadata?
         GameRegistry.registerItem(woodMite, "woodMite");
         GameRegistry.registerItem(leafMite, "leafMite");
         GameRegistry.registerItem(oreMite, "oreMite");
