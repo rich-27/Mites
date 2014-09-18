@@ -2,6 +2,7 @@ package com.richunderscore27.mites.utility;
 
 import com.richunderscore27.mites.handler.ConfigurationHandler;
 import com.richunderscore27.mites.reference.MiteTarget;
+import com.richunderscore27.mites.reference.Settings;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -46,7 +47,7 @@ public class ContiguousBlockSearch
      */
     public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier, int cont)
     {
-        maxBlocks = ConfigurationHandler.maxSearchBlocks;
+        maxBlocks = Settings.Search.maxSearchBlocks;
 
         worldObj = world;
         initSearchPos = new ChunkPosition(x, y, z);

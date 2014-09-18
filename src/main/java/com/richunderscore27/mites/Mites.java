@@ -32,7 +32,6 @@ public class Mites
     public void preInit(FMLPreInitializationEvent event)
     {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 
         // proxy.registerKeyBindings();
 
@@ -50,7 +49,13 @@ public class Mites
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-        // FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+        // Initialize mod tile entities
+        proxy.registerTileEntities();
+
+        // Initialize custom rendering and pre-load textures (Client only)
+        proxy.initRenderingAndTextures();
+
+        proxy.registerEventHandlers();
 
         Recipies.init();
 

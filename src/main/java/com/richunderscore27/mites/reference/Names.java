@@ -1,7 +1,13 @@
 package com.richunderscore27.mites.reference;
 
-public final class Names
+public class Names
 {
+    public static final class Blocks
+    {
+        public static final String COLONY = "colony";
+        public static final String MITEY_MUD = "miteyMud";
+    }
+
     public static final class Keys
     {
         public static final String CATEGORY = "keys.mites.category";

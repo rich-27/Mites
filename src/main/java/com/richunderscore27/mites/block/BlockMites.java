@@ -2,11 +2,17 @@ package com.richunderscore27.mites.block;
 
 import com.richunderscore27.mites.creativetab.CreativeTabMites;
 import com.richunderscore27.mites.reference.Reference;
+import com.richunderscore27.mites.tileentity.TileEntityMites;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockMites extends Block
 {

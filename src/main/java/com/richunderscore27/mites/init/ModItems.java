@@ -2,6 +2,7 @@ package com.richunderscore27.mites.init;
 
 import com.richunderscore27.mites.item.*;
 import com.richunderscore27.mites.reference.MiteTarget;
+import com.richunderscore27.mites.reference.Names;
 import com.richunderscore27.mites.reference.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -18,6 +19,7 @@ public class ModItems
 
     public static void init()
     {
+        // ToDo: Convert to Names.Items.WOOD_MITE, etc - convert to metadata?
         GameRegistry.registerItem(woodMite, "woodMite");
         GameRegistry.registerItem(leafMite, "leafMite");
         GameRegistry.registerItem(oreMite, "oreMite");

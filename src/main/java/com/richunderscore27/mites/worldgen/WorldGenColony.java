@@ -45,10 +45,8 @@ public class WorldGenColony extends WorldGenerator
 
                 if (MathHelper.floor_float(dist) == 0)
                 {
-                    for (int yCoord = y + 3; yCoord >= y; --yCoord)
-                    {
-                        world.setBlock(xCoord, yCoord, zCoord, ModBlocks.colony);
-                    }
+                    world.setBlock(xCoord, y + 1, zCoord, ModBlocks.colony);
+                    world.setBlock(xCoord, y, zCoord, ModBlocks.miteyMud);
                 }
                 else if ((dist < 3.2) || (dist < 5 && random.nextFloat() < 0.5) || (dist == 5 && random.nextFloat() < 0.2))
                 {
@@ -56,7 +54,7 @@ public class WorldGenColony extends WorldGenerator
                     {
                         world.setBlock(xCoord, y + 1, zCoord, Blocks.air);
                     }
-                    world.setBlock(xCoord, y, zCoord, ModBlocks.colony);
+                    world.setBlock(xCoord, y, zCoord, ModBlocks.miteyMud);
                 }
             }
         }
