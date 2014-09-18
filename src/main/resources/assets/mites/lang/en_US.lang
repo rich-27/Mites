@@ -11,6 +11,8 @@ item.mites:woodMite.name=Wood Mite
 item.mites:leafMite.name=Leaf Mite
 item.mites:oreMite.name=Ore Mite
 item.mites:advancedMite.name=Advanced Mite
+item.mites:miteyLarvae.name=Mitey Larvae
 
 # Blocks
 tile.mites:colony.name=Mitey Colony
+tile.mites:miteyMud.name=Mitey Mud

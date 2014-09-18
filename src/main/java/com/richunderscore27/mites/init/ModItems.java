@@ -15,7 +15,7 @@ public class ModItems
     public static final Item leafMite = new ItemWorldMite().setTargetBlockType(MiteTarget.LEAF).setUnlocalizedName("leafMite").setTextureName("leafMite");
     public static final Item oreMite = new ItemWorldMite().setTargetBlockType(MiteTarget.ORE).setUnlocalizedName("oreMite").setTextureName("oreMite");
     public static final Item advancedMite = new ItemWorldMite().setUnlocalizedName("advancedMite").setTextureName("advancedMite");
-    public static final Item miteyLarvae = new ItemWorldMite().setUnlocalizedName("miteyLarvae").setTextureName("miteyLarvae");
+    public static final Item miteyLarvae = new ItemMiteyLarvae().setUnlocalizedName("miteyLarvae").setTextureName("miteyLarvae");
 
     public static void init()
     {
@@ -24,5 +24,6 @@ public class ModItems
         GameRegistry.registerItem(leafMite, "leafMite");
         GameRegistry.registerItem(oreMite, "oreMite");
         GameRegistry.registerItem(advancedMite, "advancedMite");
+        GameRegistry.registerItem(miteyLarvae, "advancedMite");
     }
 }
