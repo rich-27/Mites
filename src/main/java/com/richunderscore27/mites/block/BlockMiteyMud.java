@@ -9,9 +9,9 @@ public class BlockMiteyMud extends BlockMites
     {
         super(material);
         this.setBlockName(Names.Blocks.MITEY_MUD);
+        this.setHardness(0.5F);
+        this.setStepSound(soundTypeGravel);
         this.setHarvestLevel("shovel",0);
-        // Set silk touch required - on block break either drop colony w/ silk touch or a few Mites with no silk touch
-        // int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, ItemStack);
     }
 
     public BlockMiteyMud()
