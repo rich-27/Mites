@@ -2,6 +2,7 @@ package com.richunderscore27.mites;
 
 import com.richunderscore27.mites.handler.ConfigurationHandler;
 import com.richunderscore27.mites.init.ModBlocks;
+import com.richunderscore27.mites.init.ModFluids;
 import com.richunderscore27.mites.init.ModItems;
 import com.richunderscore27.mites.init.Recipies;
 import com.richunderscore27.mites.proxy.IProxy;
@@ -34,6 +35,8 @@ public class Mites
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
         // proxy.registerKeyBindings();
+
+        ModFluids.init();
 
         ModItems.init();
 

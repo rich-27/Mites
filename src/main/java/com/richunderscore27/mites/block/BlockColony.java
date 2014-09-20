@@ -1,13 +1,12 @@
 package com.richunderscore27.mites.block;
 
-import com.richunderscore27.mites.block.material.MaterialMites;
+import com.richunderscore27.mites.reference.Materials;
 import com.richunderscore27.mites.init.ModItems;
-import com.richunderscore27.mites.reference.Names;
 import com.richunderscore27.mites.reference.RenderIds;
+import com.richunderscore27.mites.reference.Names;
 import com.richunderscore27.mites.tileentity.TileEntityColony;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -43,7 +42,7 @@ public class BlockColony extends BlockMites implements ITileEntityProvider
 
     public BlockColony()
     {
-        this(MaterialMites.toughDirt);
+        this(Materials.toughDirt);
     }
 
     @Override

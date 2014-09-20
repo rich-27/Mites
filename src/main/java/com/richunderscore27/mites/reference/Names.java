@@ -8,6 +8,16 @@ public class Names
         public static final String MITEY_MUD = "miteyMud";
     }
 
+    public static final class BlockFluids
+    {
+        public static final String MITEY_POOL = "miteyPool";
+    }
+
+    public class Fluids
+    {
+        public static final String MITEY_POOL = "miteyPool";
+    }
+
     public static final class Keys
     {
         public static final String CATEGORY = "keys.mites.category";
