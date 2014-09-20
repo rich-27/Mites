@@ -13,3 +13,12 @@
 !/LICENSE
 !/notes
 !/notes/*
+
+.DS_Store
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/resources/assets/.DS_Store
+src/main/resources/assets/mites/.DS_Store
+src/main/resources/assets/mites/models/.DS_Store
+src/main/resources/assets/mites/textures/.DS_Store
+src/main/resources/assets/mites/textures/blocks/.DS_Store
