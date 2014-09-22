@@ -1,6 +1,5 @@
 package com.richunderscore27.mites.utility;
 
-import com.richunderscore27.mites.handler.ConfigurationHandler;
 import com.richunderscore27.mites.reference.MiteTarget;
 import com.richunderscore27.mites.reference.Settings;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -18,8 +17,8 @@ import java.util.List;
 public class ContiguousBlockSearch
 {
     private final int maxBlocks;
-    private World worldObj;
-    private final ChunkPosition initSearchPos;
+    private World world;
+    private final ChunkPosition initialSearchPosition;
     private HashMap<GameRegistry.UniqueIdentifier, String> oreLookup;
     private String targetOre;
     private int contiguity;
@@ -43,17 +42,17 @@ public class ContiguousBlockSearch
      * @param z Z position
      * @param miteTarget Enum containing OreDictionary lookup of search target
      * @param uniqueIdentifier UniqueIdentifier of the target block
-     * @param cont int to determine required contiguity
+     * @param contiguity int to determine required contiguity
      */
-    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier, int cont)
+    public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier, int contiguity)
     {
-        maxBlocks = Settings.Search.maxSearchBlocks;
+        this.maxBlocks = Settings.Search.maxSearchBlocks;
 
-        worldObj = world;
-        initSearchPos = new ChunkPosition(x, y, z);
-        oreLookup = miteTarget.validItems;
-        targetOre = oreLookup.get(uniqueIdentifier) == null ? uniqueIdentifier.name : oreLookup.get(uniqueIdentifier);
-        contiguity = cont;
+        this.world = world;
+        this.initialSearchPosition = new ChunkPosition(x, y, z);
+        this.oreLookup = miteTarget.validItems;
+        this.targetOre = oreLookup.get(uniqueIdentifier) == null ? uniqueIdentifier.name : oreLookup.get(uniqueIdentifier);
+        this.contiguity = contiguity;
     }
 
     public ContiguousBlockSearch(World world, int x, int y, int z, MiteTarget miteTarget, GameRegistry.UniqueIdentifier uniqueIdentifier)
@@ -63,7 +62,7 @@ public class ContiguousBlockSearch
 
     public List<ChunkPosition> searchContiguous()
     {
-        blocksToSearch.add(initSearchPos);
+        blocksToSearch.add(initialSearchPosition);
         while (!blocksToSearch.isEmpty())
         {
             iterator.addAll(blocksToSearch);
@@ -88,7 +87,7 @@ public class ContiguousBlockSearch
                 int z = pos.chunkPosZ;
 
 
-                Block block = worldObj.getBlock(x, y, z);
+                Block block = world.getBlock(x, y, z);
                 GameRegistry.UniqueIdentifier uniqueId = GameRegistry.findUniqueIdentifierFor(block);
                 uniqueId = uniqueId.name.startsWith("lit_") ? new GameRegistry.UniqueIdentifier(uniqueId.modId + ":" + uniqueId.name.substring(4)) : uniqueId;
 

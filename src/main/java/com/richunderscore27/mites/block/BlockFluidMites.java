@@ -31,9 +31,8 @@ public class BlockFluidMites extends BlockFluidClassic
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        blockIcons = new IIcon[2];
-        blockIcons[0] = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
-        blockIcons[1] = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "_flow");
+        String iconString = this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1);
+        this.blockIcons = new IIcon[] {iconRegister.registerIcon(iconString), iconRegister.registerIcon(iconString + "_flow")};
     }
 
     @Override

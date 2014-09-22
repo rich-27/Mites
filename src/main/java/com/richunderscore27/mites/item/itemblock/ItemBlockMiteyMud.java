@@ -1,6 +1,7 @@
 package com.richunderscore27.mites.item.itemblock;
 
 import com.richunderscore27.mites.init.ModBlocks;
+import com.richunderscore27.mites.utility.FluidRayTrace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,43 +38,21 @@ public class ItemBlockMiteyMud extends ItemBlockMites
 
     public boolean createMiteyPool(ItemStack itemStack, World world, EntityPlayer player)
     {
-        MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(world, player, true);
+        MovingObjectPosition position = this.getMovingObjectPositionFromPlayer(world, player, true);
 
-        if (movingobjectposition == null)
+        FluidRayTrace fluidRayTrace = new FluidRayTrace(itemStack, world, player, Material.water, 0);
+
+        if(fluidRayTrace.rayTrace(position))
         {
-            return false;
-        }
-        else
-        {
-            if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+            world.setBlock(position.blockX, position.blockY, position.blockZ, ModBlocks.miteyPool);
+
+            if (!player.capabilities.isCreativeMode)
             {
-                int i = movingobjectposition.blockX;
-                int j = movingobjectposition.blockY;
-                int k = movingobjectposition.blockZ;
-
-                if (!world.canMineBlock(player, i, j, k))
-                {
-                    return false;
-                }
-
-                if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, itemStack))
-                {
-                    return false;
-                }
-
-                if (world.getBlock(i, j, k).getMaterial() == Material.water && world.getBlockMetadata(i, j, k) == 0)
-                {
-                    world.setBlock(i, j, k, ModBlocks.miteyPool);
-
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-                    }
-                    return true;
-                }
+                --itemStack.stackSize;
             }
-
-            return false;
+            return true;
         }
+
+        return false;
     }
 }
