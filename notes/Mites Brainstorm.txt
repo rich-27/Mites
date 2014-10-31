@@ -26,6 +26,7 @@ Tunnel Mite => Digs 2x1 tunnel in front of you
 Borehole Mite => Bores 1x1 tunnel down
 Stairwell Mite => Digs out a stairwell creation
 } - Put into Advanced Mite?
+Withering Mite => Made with nether stars, kills wither quickly
 
 Player mites
 Crafty Mite => Used to craft other mites autonomously, just
@@ -46,7 +47,11 @@ Decaying Mite => Turns player invisible to mobs
                         => Player burns in sunlight
                         => Gives player hunger V?
                         => Eating Thaumcraft zombie brain temporarily
-                             stops hunger 
+                             stops hunger
+Learned Mite => Thaumcraft integration
+                        => Attempts to research anything the player is looking at fgor long enough
+                        => Expensive
+                        => Minimilistic screen rendering
 
 Colony => Grows vs constructed? Worldgen?
             => Need to be located near a food source?
