@@ -1,24 +1,32 @@
 package com.richunderscore27.mites.block;
 
+import com.richunderscore27.mites.reference.Materials;
+import com.richunderscore27.mites.init.ModFluids;
+import com.richunderscore27.mites.reference.Names;
 import com.richunderscore27.mites.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-public class BlockFluidMites extends BlockFluidClassic
+public class BlockFluidEnrichedWater extends BlockFluidClassic
 {
     private IIcon[] blockIcons;
 
-    public BlockFluidMites(Fluid fluid, Material material)
+    public BlockFluidEnrichedWater()
+    {
+        this(ModFluids.enrichedWater, Materials.solidWater);
+    }
+
+    public BlockFluidEnrichedWater(Fluid fluid, Material material)
     {
         super(fluid, material);
         this.setHardness(100.0F);
         this.disableStats();
+        this.setBlockName(Names.BlockFluids.ENRICHED_WATER);
     }
 
     @Override

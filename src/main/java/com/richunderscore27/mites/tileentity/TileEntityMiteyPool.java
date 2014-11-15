@@ -149,7 +149,15 @@ public class TileEntityMiteyPool extends TileEntityMites implements ISidedInvent
     @Override
     public void setInventorySlotContents(int slot, ItemStack itemStack)
     {
-        inventory.set(slot, itemStack);
+        if(inventory.size() < slot + 1)
+        {
+            inventory.add(slot, itemStack);
+        }
+        else
+        {
+            inventory.set(slot, itemStack);
+        }
+
         if(itemStack != null && itemStack.stackSize > getInventoryStackLimit()) {
             itemStack.stackSize = getInventoryStackLimit();
         }
@@ -186,7 +194,7 @@ public class TileEntityMiteyPool extends TileEntityMites implements ISidedInvent
     @Override
     public String getInventoryName()
     {
-        return Names.BlockFluids.MITEY_POOL;
+        return Names.Blocks.MITEY_POOL;
     }
 
     @Override

@@ -28,17 +28,14 @@ public class ItemMiteyLarvae extends ItemMites
     {
         MovingObjectPosition position = this.getMovingObjectPositionFromPlayer(world, player, true);
 
-        FluidRayTrace fluidRayTrace = new FluidRayTrace(itemStack, world, player, ModBlocks.miteyPool, 0);
+        FluidRayTrace fluidRayTrace = new FluidRayTrace(itemStack, world, player, ModBlocks.enrichedWater, 0);
 
         if(fluidRayTrace.rayTrace(position))
         {
-            /* TODO: Change to switch block to 'fake' fluid
-            int metadata = world.getBlockMetadata(position.blockX, position.blockY, position.blockZ);
-            world.setBlockMetadataWithNotify(position.blockX, position.blockY, position.blockZ, (metadata | 2), (2 | 4));
+            world.setBlock(position.blockX, position.blockY, position.blockZ, ModBlocks.miteyPool);
             TileEntityMiteyPool miteyPool = (TileEntityMiteyPool) world.getTileEntity(position.blockX, position.blockY, position.blockZ);
-            */
 
-            //miteyPool.setInventorySlotContents(0, new ItemStack(ModItems.miteyLarvae));
+            miteyPool.setInventorySlotContents(0, new ItemStack(ModItems.miteyLarvae));
             /* TODO: fix
                 Caused by: java.lang.NullPointerException
 	                at com.richunderscore27.mites.item.ItemMiteyLarvae.onItemRightClick(ItemMiteyLarvae.java:38) ~[ItemMiteyLarvae.class:?]

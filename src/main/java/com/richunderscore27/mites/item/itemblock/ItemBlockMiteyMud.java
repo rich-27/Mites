@@ -44,7 +44,7 @@ public class ItemBlockMiteyMud extends ItemBlockMites
 
         if(fluidRayTrace.rayTrace(position))
         {
-            world.setBlock(position.blockX, position.blockY, position.blockZ, ModBlocks.miteyPool);
+            world.setBlock(position.blockX, position.blockY, position.blockZ, ModBlocks.enrichedWater);
 
             if (!player.capabilities.isCreativeMode)
             {
