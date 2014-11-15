@@ -3,14 +3,19 @@ package com.richunderscore27.mites.tileentity;
 import com.richunderscore27.mites.init.ModItems;
 import com.richunderscore27.mites.item.ItemWorldMite;
 import com.richunderscore27.mites.reference.Names;
+import com.richunderscore27.mites.utility.LogHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.ChunkPosition;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // TODO: Add updateEntity with random mite spawns if heat source exist within distance
 // TODO: Influence mite spawn chances by blocks of a certain type within distance
@@ -18,13 +23,62 @@ import java.util.ArrayList;
 // TODO: Slot 0 => larvae, slots ... => mites, slots ... => upgrades
 // TODO: Tile entity contents affect tile entity production? Ore mites => ore mites etc
 
+/*
+    rich_27: How do I make a config option of a list of blocks with attached values?
+
+    digseraph|afk: rich_27, I might be wrong, but i think the easiest would be
+    to use a list of strings, where each string is an easily parsed combination
+    of the block and value, something like "block.blockname=42"
+ */
+
 public class TileEntityMiteyPool extends TileEntityMites implements ISidedInventory
 {
     public ArrayList<ItemStack> inventory;
+    public HashMap<ChunkPosition, GameRegistry.UniqueIdentifier> heatSources;
+    public HashMap<GameRegistry.UniqueIdentifier, Integer> warmBlocks = new HashMap<GameRegistry.UniqueIdentifier, Integer>();
+    public double heatLevel = 0;
 
     public TileEntityMiteyPool()
     {
-        inventory = new ArrayList<ItemStack>();
+        this.inventory = new ArrayList<ItemStack>();
+        warmBlocks.put(GameRegistry.findUniqueIdentifierFor(Blocks.lava), 200);
+        warmBlocks.put(GameRegistry.findUniqueIdentifierFor(Blocks.lit_furnace), 150);
+        //this.warmBlocks = Settings.WarmBlocks.warmBlocks; TODO: make warmBlocks work from config
+    }
+
+    public double heatSourceCheck(){
+        double heat = 0.0;
+        for(int xIter = -3; xIter <= 3; ++xIter)
+        {
+            int x = this.xCoord + xIter;
+            for(int zIter = -3; zIter <= 3; ++zIter)
+            {
+                int z = this.zCoord + zIter;
+                for(int yIter = -3; yIter <= 3; ++yIter)
+                {
+                    int y = this.yCoord + yIter;
+
+                    GameRegistry.UniqueIdentifier blockUID = GameRegistry.findUniqueIdentifierFor(this.worldObj.getBlock(x, y, z));
+                    if(warmBlocks.containsKey(blockUID))
+                    {
+                        double dist = Math.sqrt((xCoord-x)*(xCoord-x) + (yCoord-y)*(yCoord-y) + (zCoord-z)*(zCoord-z));
+                        heat += warmBlocks.get(blockUID)/Math.sqrt(dist);
+                    }
+                }
+            }
+        }
+        return heat;
+    }
+
+    @Override
+    public void updateEntity(){
+        double heat = heatSourceCheck();
+        if (this.heatLevel != heat){
+            LogHelper.info("Heat Level: " + heat + ", Old Heat: " + this.heatLevel);
+            this.heatLevel = heat;
+        }
+
+        super.updateEntity();
     }
 
     @Override
@@ -46,9 +100,9 @@ public class TileEntityMiteyPool extends TileEntityMites implements ISidedInvent
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound p_145841_1_)
+    public void writeToNBT(NBTTagCompound nbtTagCompound)
     {
-        super.writeToNBT(p_145841_1_);
+        super.writeToNBT(nbtTagCompound);
 
         NBTTagList tagList = new NBTTagList();
         for (ItemStack itemStack : inventory)

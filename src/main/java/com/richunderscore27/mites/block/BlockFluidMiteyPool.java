@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Random;
 
-// TODO: Identify tileEntity by metadata
+// TODO: Implement 'fake' fluid for static block with tile entity, switches to this when flowing conditions met, dropping inventory.
 
 public class BlockFluidMiteyPool extends BlockFluidMites
 {
@@ -27,6 +27,7 @@ public class BlockFluidMiteyPool extends BlockFluidMites
         this.setBlockName(Names.BlockFluids.MITEY_POOL);
     }
 
+    /*
     @Override
     public boolean hasTileEntity(int metadata)
     {
@@ -38,7 +39,9 @@ public class BlockFluidMiteyPool extends BlockFluidMites
     {
         return (metadata & 2) == 0 ? new TileEntityMiteyPool() : null;
     }
+    */
 
+    /*
     public void breakBlock(World world, int x, int y, int z, Block block, int metaData)
     {
         if ((metaData & 2) != 0)
@@ -48,7 +51,9 @@ public class BlockFluidMiteyPool extends BlockFluidMites
         }
         super.breakBlock(world, x, y, z, block, metaData);
     }
+    */
 
+    /*
     public boolean onBlockEventReceived(World world, int x, int y, int z, int eventNo, int eventArg)
     {
         super.onBlockEventReceived(world, x, y, z, eventNo, eventArg);
@@ -61,7 +66,9 @@ public class BlockFluidMiteyPool extends BlockFluidMites
 
         return false;
     }
+    */
 
+    /*
     protected void dropInventory(World world, int x, int y, int z)
     {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
@@ -99,4 +106,5 @@ public class BlockFluidMiteyPool extends BlockFluidMites
             }
         }
     }
+    */
 }
