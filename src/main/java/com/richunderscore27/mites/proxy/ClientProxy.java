@@ -1,6 +1,5 @@
 package com.richunderscore27.mites.proxy;
 
-import com.richunderscore27.mites.client.handler.KeyInputEventHandler;
 import com.richunderscore27.mites.client.renderer.item.ItemRendererColony;
 import com.richunderscore27.mites.client.renderer.tileentity.TileEntityRendererColony;
 import com.richunderscore27.mites.init.ModBlocks;
@@ -8,7 +7,6 @@ import com.richunderscore27.mites.reference.RenderIds;
 import com.richunderscore27.mites.tileentity.TileEntityColony;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 

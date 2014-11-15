@@ -25,6 +25,7 @@ public class ConfigurationHandler
     private static void loadConfiguration()
     {
         Settings.Search.maxSearchBlocks = configuration.getInt("maxSearchBlocks", Configuration.CATEGORY_GENERAL, 500, 0, 10000, "Maximum number of blocks in a given Mite search");
+        //Settings.WarmBlocks.warmBlocks = configuration.getStringList("warmBlocks", Configuration.CATEGORY_GENERAL, [""])
 
         if (configuration.hasChanged())
         {
