@@ -52,6 +52,7 @@ Learned Mite => Thaumcraft integration
                         => Attempts to research anything the player is looking at fgor long enough
                         => Expensive
                         => Minimilistic screen rendering
+Creepy Mite => Shows your trail (on button down? button to toggle?)
 
 Colony => Grows vs constructed? Worldgen?
             => Need to be located near a food source?
